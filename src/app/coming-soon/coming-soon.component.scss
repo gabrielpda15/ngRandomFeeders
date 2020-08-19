@@ -1,0 +1,29 @@
+.bg {
+  background-image: url('../../assets/comingsoon.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cs-font {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-stretch: 100%;
+  line-height: 110px;
+  letter-spacing: 5px;
+  color: whitesmoke;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 25px;
+  letter-spacing: 8px !important;
+}
+
+p {
+  color: whitesmoke;
+}

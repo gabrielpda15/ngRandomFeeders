@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  comingSoon: 0,
+  production: false
 };
