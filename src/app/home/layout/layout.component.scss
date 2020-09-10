@@ -1,0 +1,22 @@
+footer {
+  background-color: #383b43;
+  height: 100px;
+  width: 100vw;
+  color: #f0f0f0;
+
+  div {
+    width: 50%;
+    height: fit-content;
+  }
+
+  a {
+    color: #f0f0f0;
+    &:hover {
+      color: #f0f0f0;
+    }
+  }
+
+  .discord {
+    background-color: #7289ff;
+  }
+}

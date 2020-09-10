@@ -1,0 +1,13 @@
+<div class="errorpage w-100 h-100 m-0 p-0">
+  <div class="row h-100 w-100">
+      <div class="col-flex mx-auto my-auto">
+          <div class="countup text-center" (mouseenter)="onMouseEnter()">
+              <p class="title display-3">{{ count }}</p>
+              <p class="h5 mb-5">Página não encontrada</p>
+              <p class="h5 mb-0">Isso pode não significar nada.</p>
+              <p class="h5 mb-5">Provavelmente estou trabalhando em algo que explodiu.</p>
+              <a [routerLink]="['/']" class="btn btn-primary">Ir para Home</a>
+          </div>
+      </div>
+  </div>
+</div>

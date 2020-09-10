@@ -1,0 +1,14 @@
+<app-header [relative]="!isHomePage()"></app-header>
+
+<router-outlet></router-outlet>
+
+<footer class="row m-0 px-5">
+  <div class="col my-auto">
+    <p *ngIf="false">© Random Feeders. Todos os direitos reservados.</p>
+  </div>
+  <div class="col my-auto text-right">
+    <a href="http://discord.randomfeeders.com.br/" class="rounded-circle p-2 discord" target="_blank">
+      <fa-icon [icon]="faDiscord" size="lg"></fa-icon>
+    </a>
+  </div>
+</footer>

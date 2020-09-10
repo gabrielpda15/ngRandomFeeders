@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
+
+* {
+  font-family: "Roboto Mono", monospace !important;
+}
+
+.errorpage {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgba(255,255,255,.87);
+}
+
+div.countUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    p.title {
+      font-weight: 500;
+    }
+
+    p {
+      font-weight: 300;
+    }
+}
+
+.btn {
+  border-radius: 20px;
+}

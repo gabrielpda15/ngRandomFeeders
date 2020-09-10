@@ -9,6 +9,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "release": "ng build --aot --prod",
     "config": "ts-node config.ts",
     "heroku-postbuild": "ts-node config.ts && ng build --aot --prod",
     "test": "ng test",

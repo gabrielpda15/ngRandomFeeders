@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   @ViewChild('modal', {static: false}) private modal: ModalComponent;
 
   ngOnInit(): void {
-    console.log({service: this.loginService});
   }
 
   public onSubmit(): void {
