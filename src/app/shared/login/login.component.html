@@ -1,0 +1,13 @@
+<app-modal #modal title="Login" submitText="Login" (submitAction)="onSubmit()">
+  <div class="form-group">
+    <label class="" for="username">Usuário</label>
+    <input [(ngModel)]="username" class="form-control" id="username" type="text" placeholder="Usuário" required>
+  </div>
+  <div class="form-group">
+    <label class="" for="password">Senha</label>
+    <input [(ngModel)]="password" class="form-control" id="password" type="password" placeholder="**********" required>
+  </div>
+  <div *ngIf="errorMessage !== null" class="form-group">
+    <p class="text-danger">{{ errorMessage }}</p>
+  </div>
+</app-modal>

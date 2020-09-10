@@ -1,0 +1,102 @@
+<app-header></app-header>
+
+<div class="row banner text-center w-100 m-0">
+  <div class="m-auto">
+    <h2>Eai seu feeder!</h2>
+    <p>Pronto para entrar na melhor comunidade geek do Brasil!?</p>
+    <a href="http://discord.randomfeeders.com.br/" class="btn btn-primary" target="_blank">Participar agora!</a>
+  </div>
+</div>
+
+<div id="about" class="row bg-2 border-bottom py-5 w-100 m-0">
+  <div class="col-12">
+    <div class="row my-4">
+      <div class="col-12">
+        <div class="row">
+          <h2 class="mx-auto">Sobre</h2>
+        </div>
+        <div class="row">
+          <p class="mx-auto">
+            Banana
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tournaments" class="row bg-1 border-bottom py-5 w-100 m-0">
+  <div class="col-12">
+    <div class="row my-4">
+      <div class="col-12">
+        <div class="row">
+          <h2 class="mx-auto">Campeonatos de Lolzin</h2>
+        </div>
+        <div class="row">
+          <p class="mx-auto">
+            Tem para todos! Chegue com seus amigos em um time premade, ou
+            jogue com quatro parças aleatórios.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col-1"></div>
+      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+        <div class="mb-5">
+          <fa-icon class="circle-icon diff bg-1" [icon]="faRandom" size="2x"></fa-icon>
+        </div>
+        <h3>RFT</h3>
+        <h5>Random FFA Tournament</h5>
+        <p class="my-4">
+          Um campeonato cujos times serão aleatórizados pelo nosso sistema,
+          levando em conta seu elo na solo/duo e suas possíveis roles. É
+          possivel ocorrer o autofill de posições!
+        </p>
+      </div>
+      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+        <div class="mb-5">
+          <fa-icon class="circle-icon bg-2 mb-2" [icon]="faUsers" size="2x"></fa-icon>
+        </div>
+        <h3>TBT</h3>
+        <h5>Team Battle Tournament</h5>
+        <p class="my-4">
+          Traga um time completo! Iremos calcular a pontuação e mostrar os
+          possíveis campeonatos disponíveis.
+        </p>
+        <br />
+      </div>
+      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+        <div class="mb-5">
+          <fa-icon class="circle-icon diff bg-3" [icon]="faEllipsisH" size="2x"></fa-icon>
+        </div>
+        <h3>E muitos outros!</h3>
+        <h5>Muitos mesmo!</h5>
+        <p class="my-4">
+          Temos campeonatos de outros jogos também como Valorant, MTG Arena,
+          etc... Venha conhecer!
+        </p>
+        <br />
+      </div>
+      <div class="col-1"></div>
+    </div>
+    <div class="row">
+      <a [routerLink]="['tournaments']" class="btn btn-primary mx-auto mt-5">Saiba mais!</a>
+    </div>
+  </div>
+</div>
+
+<div id="contact" class="row bg-2 border-bottom py-5 w-100 m-0">
+
+</div>
+
+<footer class="row m-0 px-5">
+  <div class="col my-auto">
+    <p *ngIf="false">© Random Feeders. Todos os direitos reservados.</p>
+  </div>
+  <div class="col my-auto text-right">
+    <a href="http://discord.randomfeeders.com.br/" class="rounded-circle p-2 discord">
+      <fa-icon [icon]="faDiscord" size="lg"></fa-icon>
+    </a>
+  </div>
+</footer>

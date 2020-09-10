@@ -1,0 +1,19 @@
+<ng-template #modalobj let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
+      <div data-dismiss="modal" aria-label="Close" class="close" (click)="modal.close('cancel')">
+        <svg aria-hidden="true" class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close('cancel')">Voltar</button>
+      <button type="button" class="btn btn-primary" (click)="submitAction.emit($event)">{{ submitText }}</button>
+    </div>
+  </div>
+</ng-template>
