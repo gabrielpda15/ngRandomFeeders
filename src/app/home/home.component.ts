@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public faEllipsisH = faEllipsisH;
 
   public errorMessage: string = null;
+  public successMessage: string = null;
 
   constructor(private emailService: EmailService) { }
 
@@ -36,9 +37,23 @@ export class HomeComponent implements OnInit {
                                  `Nome: ${name.value}<br>
                                   Email: ${email.value}<br><br>
                                   ${message.value}`)
-            .then(r => console.log({r}))
-            .catch(e => console.log({e}))
-            .finally(() => console.log('finally'));
+            .then(r => {
+              if (r === 'OK') {
+                this.successMessage = 'Mensagem enviada com sucesso!';
+              } else {
+                this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
+                console.error(r);
+              }
+            })
+            .catch(e => {
+              this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
+              console.error(e);
+            })
+            .finally(() => {
+              name.value = '';
+              email.value = '';
+              message.value = '';
+            });
         } else {
           this.errorMessage = 'A sua mensagem deve possuir mais de 20 caracteres!';
         }
