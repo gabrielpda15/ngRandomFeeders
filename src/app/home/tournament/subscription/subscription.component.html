@@ -1,0 +1,55 @@
+<div class="d-flex flex-column w-100 h-100">
+  <div class="w-50 m-auto">
+    <div class="row mb-3">
+      <h2 class="mx-auto">Inscrição no Torneio</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input #name type="text" class="form-control" id="name" placeholder="Nome">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input #email type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="text-justify form-group">
+              <label for="discord">Discord Tag</label>
+              <input #discord type="text" class="form-control" id="discord" placeholder="Discord#Tag">
+              <p class="mt-2 text-danger text-wrap">* É necessario estar no servidor do discord Random Feeders para participar.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="nicklol">Nick do LoL</label>
+              <input #nicklol type="text" class="form-control" id="nicklol" placeholder="Nick do LoL">
+            </div>
+          </div>
+        </div>
+        <div *ngIf="errorMessage != null" class="form-group">
+          <p class="text-danger">{{ errorMessage }}</p>
+        </div>
+        <div *ngIf="successMessage != null" class="form-group">
+          <p class="text-success">{{ successMessage }}</p>
+        </div>
+        <div *ngIf="idleMessage != null" class="form-group">
+          <p class="text-secondary">{{ idleMessage }}</p>
+        </div>
+        <button type="button" class="btn btn-primary px-5 py-2 float-right"
+          (click)="sendSubscription({name: name, email: email, discord: discord, nicklol: nicklol})" [disabled]="idleMessage != null">Enviar</button>
+      </div>
+    </div>
+  </div>
+  <div class="text-center w-100 mx-auto mb-2">
+    <p class="px-4 text-secondary text-wrap">* Leia as regras do torneio no servidor do discord Random Feeders antes de enviar sua inscrição.
+      Ao enviar sua inscrição você estará de acordo com as regras do servidor e torneio.</p>
+  </div>
+</div>

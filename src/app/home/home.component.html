@@ -1,6 +1,6 @@
 <div class="row banner text-center w-100 m-0">
   <div class="col-flex m-auto">
-    <h2 class="text-wrap">Eai seu feeder!</h2>
+    <h2 class="text-wrap">E aí seu feeder!</h2>
     <p class="text-wrap">Pronto para entrar na melhor comunidade geek do Brasil!?</p>
     <a href="http://discord.randomfeeders.com.br/" class="btn btn-primary" target="_blank">Participar agora!</a>
   </div>
@@ -113,8 +113,11 @@
         <div *ngIf="successMessage != null" class="form-group">
           <p class="text-success">{{ successMessage }}</p>
         </div>
+        <div *ngIf="idleMessage != null" class="form-group">
+          <p class="text-secondary">{{ idleMessage }}</p>
+        </div>
         <button type="button" class="btn btn-primary px-5 py-2 float-right"
-          (click)="sendContactUs(name, email, message)">Enviar</button>
+          (click)="sendContactUs(name, email, message)" [disabled]="idleMessage != null">Enviar</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faRandom, faUsers, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { EmailService } from '../shared/email/email.service';
-import { isNullOrWhitespace } from '../shared/utils';
+import { isNullOrWhitespace, emailRegex } from '../shared/utils';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +10,13 @@ import { isNullOrWhitespace } from '../shared/utils';
 })
 export class HomeComponent implements OnInit {
 
-  private emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-
   public faRandom = faRandom;
   public faUsers = faUsers;
   public faEllipsisH = faEllipsisH;
 
   public errorMessage: string = null;
   public successMessage: string = null;
+  public idleMessage: string = null;
 
   constructor(private emailService: EmailService) { }
 
@@ -25,12 +24,12 @@ export class HomeComponent implements OnInit {
   }
 
   public sendContactUs(name: {value: string}, email: {value: string}, message: {value: string}): void {
+    this.successMessage = null;
     this.errorMessage = null;
     if (!isNullOrWhitespace(name.value)) {
-      if (this.emailRegex.test(email.value)) {
+      if (emailRegex.test(email.value)) {
         if (message.value.length > 20) {
-          this.errorMessage = null;
-          console.log('Trying to send email');
+          this.idleMessage = 'Enviando mensagem...';
           this.emailService.send('contato@randomfeeders.com.br',
                                  'contato@randomfeeders.com.br',
                                  `${name.value} envio uma mensagem`,
@@ -53,6 +52,7 @@ export class HomeComponent implements OnInit {
               name.value = '';
               email.value = '';
               message.value = '';
+              this.idleMessage = null;
             });
         } else {
           this.errorMessage = 'A sua mensagem deve possuir mais de 20 caracteres!';
