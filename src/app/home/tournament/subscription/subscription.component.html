@@ -1,36 +1,44 @@
-<div class="d-flex flex-column w-100 h-100">
-  <div class="w-50 m-auto">
-    <div class="row mb-3">
-      <h2 class="mx-auto">Inscrição no Torneio</h2>
+<div class="row d-flex w-100 h-100">
+  <div class="d-flex position-absolute back ml-5 mt-4" [routerLink]="['/tournament']" skipLocationChange>
+    <fa-icon class="my-auto" [icon]="faArrowCircleLeft" size="2x"></fa-icon>
+    <span class="ml-2 my-auto">Voltar</span>
+  </div>
+  <div class="col-11 col-md-9 col-lg-6 m-auto pt-4 pt-sm-0">
+    <div class="row my-5 my-sm-3">
+      <div class="d-flex flex-column col text-center">
+        <h2 class="mx-auto">Inscrição no Torneio</h2>
+        <h4 *ngIf="!enabled" class="mx-auto text-danger">Não temos nenhum torneio em aberto atualmente!</h4>
+        <h4 *ngIf="!enabled" class="mx-auto text-danger">Verifique nosso discord para saber quando abriremos um novo torneio.</h4>
+      </div>
     </div>
     <div class="row">
       <div class="col">
         <div class="row">
-          <div class="col">
+          <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="name">Nome</label>
-              <input #name type="text" class="form-control" id="name" placeholder="Nome">
+              <input #name type="text" class="form-control" id="name" placeholder="Nome" [disabled]="!enabled">
             </div>
           </div>
-          <div class="col">
+          <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input #email type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail">
+              <input #email type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" [disabled]="!enabled">
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col-12 col-md-6">
             <div class="text-justify form-group">
               <label for="discord">Discord Tag</label>
-              <input #discord type="text" class="form-control" id="discord" placeholder="Discord#Tag">
+              <input #discord type="text" class="form-control" id="discord" placeholder="Discord#Tag" [disabled]="!enabled">
               <p class="mt-2 text-danger text-wrap">* É necessario estar no servidor do discord Random Feeders para participar.</p>
             </div>
           </div>
-          <div class="col">
+          <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="nicklol">Nick do LoL</label>
-              <input #nicklol type="text" class="form-control" id="nicklol" placeholder="Nick do LoL">
+              <input #nicklol type="text" class="form-control" id="nicklol" placeholder="Nick do LoL" [disabled]="!enabled">
             </div>
           </div>
         </div>
@@ -44,12 +52,12 @@
           <p class="text-secondary">{{ idleMessage }}</p>
         </div>
         <button type="button" class="btn btn-primary px-5 py-2 float-right"
-          (click)="sendSubscription({name: name, email: email, discord: discord, nicklol: nicklol})" [disabled]="idleMessage != null">Enviar</button>
+          (click)="sendSubscription({name: name, email: email, discord: discord, nicklol: nicklol})" [disabled]="idleMessage != null || !enabled">Enviar</button>
       </div>
     </div>
   </div>
   <div class="text-center w-100 mx-auto mb-2">
-    <p class="px-4 text-secondary text-wrap">* Leia as regras do torneio no servidor do discord Random Feeders antes de enviar sua inscrição.
+    <p class="px-4 text-secondary text-wrap">* Leia as <a [routerLink]="['/tournament/rules']" skipLocationChange>regras do torneio</a> antes de enviar sua inscrição.
       Ao enviar sua inscrição você estará de acordo com as regras do servidor e torneio.</p>
   </div>
 </div>

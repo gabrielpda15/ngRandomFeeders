@@ -1,0 +1,25 @@
+<div class="d-flex flex-column w-100 h-100">
+  <div class="w-75 m-auto text-center">
+    <h2 class="mb-4">Torneios do Random Feeders</h2>
+    <div class="row">
+      <p class="mx-4 w-100">
+        Organizamos diversos tipos de torneios! Fique ligado no nosso discord para saber quando irão acontecer!
+      </p>
+      <p class="mx-4 w-100">
+        Inicialmente iremos focar apenas em torneios de League of Legends, já que pretendemos construir uma
+        boa base de jogadores antes de partir para torneios de outros jogos! Estamos em uma fase de  testes dos torneios
+        já que não sabemos ao certo como isso será no futuro!
+      </p>
+      <p class="mx-4 w-100">
+        De uma olhada nas regras de cada torneio para saber como cada um funciona, e não deixe de tirar suas duvidas em
+        nosso servidor!
+      </p>
+    </div>
+    <div class="row text-center">
+      <div class="mx-auto">
+        <a [routerLink]="['/tournament/rules']" class="btn btn-primary mt-5 mx-2" skipLocationChange>Regras</a>
+        <a *ngIf="environment.subscriptionEnabled" [routerLink]="['/tournament/subscription']" class="btn btn-primary mt-5 mx-2" skipLocationChange>Inscrição</a>
+      </div>
+    </div>
+  </div>
+</div>

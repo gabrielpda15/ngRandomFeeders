@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-info',
@@ -8,10 +10,12 @@ import { Router } from '@angular/router';
 })
 export class InfoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public environment = environment;
+
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/']);
+    this.location.replaceState('/');
   }
 
 }

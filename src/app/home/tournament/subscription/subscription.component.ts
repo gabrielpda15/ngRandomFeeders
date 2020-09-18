@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { EmailService } from 'src/app/shared/email/email.service';
 import { isNullOrWhitespace, emailRegex, discordRegex } from '../../../shared/utils';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 declare type subscription = {
   name: { value: string },
@@ -13,13 +15,18 @@ declare type subscription = {
 
 @Component({
   selector: 'app-subscription',
-  templateUrl: './subscription.component.html'
+  templateUrl: './subscription.component.html',
+  styleUrls: [ './subscription.component.scss' ]
 })
 export class SubscriptionComponent implements OnInit {
 
   public errorMessage: string = null;
   public successMessage: string = null;
   public idleMessage: string = null;
+
+  public faArrowCircleLeft = faArrowCircleLeft;
+
+  public enabled = environment.subscriptionEnabled;
 
   constructor(private emailService: EmailService, private router: Router,
               private location: Location) { }

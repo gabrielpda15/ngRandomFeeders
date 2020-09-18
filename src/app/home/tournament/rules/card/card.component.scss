@@ -1,0 +1,29 @@
+.bg-card {
+  background-color: #f0f0f0;
+}
+
+.circle-icon {
+  padding: 33px 16px 21px 16px;
+  border-radius: 100%;
+  color: #f0f0f0;
+
+  &.bg-1 {
+    background-color: #add43c;
+  }
+
+  &.bg-2 {
+    background-color: #3cadd4;
+  }
+
+  &.bg-3 {
+    background-color: #d43c61;
+  }
+
+  &.diff {
+    padding: 33px 20px 21px 20px;
+  }
+}
+
+li {
+  white-space: pre-wrap;
+}
