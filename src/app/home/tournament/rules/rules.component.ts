@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faArrowCircleLeft, faUserFriends } from '@fortawesome/free-solid-svg-icons';
-import { Location } from '@angular/common';
 
 declare type rule = {
   title: string,
@@ -40,10 +39,9 @@ export class RulesComponent implements OnInit {
      }
   ];
 
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.location.replaceState('/');
   }
 
 }

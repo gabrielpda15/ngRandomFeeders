@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { EmailService } from 'src/app/shared/email/email.service';
 import { isNullOrWhitespace, emailRegex, discordRegex } from '../../../shared/utils';
 import { Router } from '@angular/router';
@@ -28,11 +27,9 @@ export class SubscriptionComponent implements OnInit {
 
   public enabled = environment.subscriptionEnabled;
 
-  constructor(private emailService: EmailService, private router: Router,
-              private location: Location) { }
+  constructor(private emailService: EmailService, private router: Router) { }
 
   ngOnInit(): void {
-    this.location.replaceState('/');
   }
 
   private getJson(value: subscription): string {
