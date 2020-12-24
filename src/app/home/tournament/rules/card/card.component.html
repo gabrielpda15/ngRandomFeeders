@@ -1,0 +1,15 @@
+<div class="bg-card border text-center pl-2 pr-4 pt-5 pb-2">
+  <div class="mb-5">
+    <fa-icon class="circle-icon bg-2 mb-2" [class.diff]="diff" [icon]="icon" size="2x"></fa-icon>
+  </div>
+  <h3>{{initials}}</h3>
+  <h5>{{title}}</h5>
+  <div class="text-justify my-4">
+    <ul>
+      <li *ngFor="let item of description">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+  <br />
+</div>

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'tournaments', component: TournamentComponent}
+      { path: 'tournament', loadChildren: () => import('./tournament/tournament.module').then(m => m.TournamentModule) }
     ]
   }
 ];

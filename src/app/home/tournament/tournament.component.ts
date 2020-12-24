@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tournament',
-  templateUrl: './tournament.component.html',
-  styleUrls: ['./tournament.component.scss']
+  templateUrl: './tournament.component.html'
 })
 export class TournamentComponent implements OnInit {
 

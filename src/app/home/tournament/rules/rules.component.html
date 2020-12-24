@@ -1,0 +1,18 @@
+<div class="d-flex flex-column w-100 h-100 mb-5">
+  <div class="my-4 w-100 text-center">
+    <div class="d-flex position-absolute back ml-4" [routerLink]="['/tournament']">
+      <fa-icon class="my-auto" [icon]="faArrowCircleLeft" size="2x"></fa-icon>
+      <span class="ml-2 my-auto">Voltar</span>
+    </div>
+    <div class="mt-5 mt-sm-0 w-100">
+      <h2>Regras dos Torneios</h2>
+    </div>
+  </div>
+  <div class="d-flex flex-row w-100 m-auto justify-content-around">
+    <app-rulecard *ngFor="let item of rules"
+      class="col-10 col-xl-4 col-lg-5 col-md-6 col-sm-8 mb-4"
+      [title]="item.title" [description]="item.description"
+      [icon]="item.icon" [initials]="item.initials"
+    ></app-rulecard>
+  </div>
+</div>

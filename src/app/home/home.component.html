@@ -1,7 +1,7 @@
 <div class="row banner text-center w-100 m-0">
-  <div class="m-auto">
-    <h2>Eai seu feeder!</h2>
-    <p>Pronto para entrar na melhor comunidade geek do Brasil!?</p>
+  <div class="col-flex m-auto">
+    <h2 class="text-wrap">E aí seu feeder!</h2>
+    <p class="text-wrap">Pronto para entrar na melhor comunidade geek do Brasil!?</p>
     <a href="http://discord.randomfeeders.com.br/" class="btn btn-primary" target="_blank">Participar agora!</a>
   </div>
 </div>
@@ -9,12 +9,12 @@
 <div id="about" class="row bg-2 border-bottom py-5 w-100 m-0">
   <div class="col-12">
     <div class="row my-4">
-      <div class="col-8 mx-auto">
+      <div class="col-md-8 col-sm-10 col-12 mx-auto">
         <div class="row w-100">
           <h2 class="mx-auto">Sobre</h2>
         </div>
         <div class="row w-100">
-          <div class="col-flex mx-auto px-5">
+          <div class="col-flex mx-auto px-3 px-md-5">
             <p class="text-center text-wrap mx-auto">
               Quem nós somos?! Somos um grupo de amigos que gostariamos de criar uma grande comunidade geek!<br>
               Sempre tivemos muito amor pela cultura geek, e é isso que essa comunidade busca. Estamos atrás de
@@ -34,8 +34,8 @@
         <div class="row">
           <h2 class="mx-auto">Campeonatos de Lolzin</h2>
         </div>
-        <div class="row">
-          <p class="mx-auto">
+        <div class="row px-3 px-md-0">
+          <p class="mx-auto text-wrap">
             Tem para todos! Chegue com seus amigos em um time premade, ou
             jogue com quatro parças aleatórios.
           </p>
@@ -43,8 +43,8 @@
       </div>
     </div>
     <div class="row justify-content-around">
-      <div class="col-1"></div>
-      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+      <div class="col-lg-1"></div>
+      <div class="col-8 col-md-7 col-lg-2 flex bg-card border px-2 pt-5 pb-2 text-center mb-3 mb-lg-0">
         <div class="mb-5">
           <fa-icon class="circle-icon diff bg-1" [icon]="faRandom" size="2x"></fa-icon>
         </div>
@@ -56,7 +56,7 @@
           possivel ocorrer o autofill de posições!
         </p>
       </div>
-      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+      <div class="col-8 col-md-7 col-lg-2 flex bg-card border px-2 pt-5 pb-2 text-center mb-3 mb-lg-0">
         <div class="mb-5">
           <fa-icon class="circle-icon bg-2 mb-2" [icon]="faUsers" size="2x"></fa-icon>
         </div>
@@ -68,7 +68,7 @@
         </p>
         <br />
       </div>
-      <div class="col-2 flex border px-2 pt-5 pb-2 text-center">
+      <div class="col-8 col-md-7 col-lg-2 flex bg-card border px-2 pt-5 pb-2 text-center mb-3 mb-lg-0">
         <div class="mb-5">
           <fa-icon class="circle-icon diff bg-3" [icon]="faEllipsisH" size="2x"></fa-icon>
         </div>
@@ -80,16 +80,16 @@
         </p>
         <br />
       </div>
-      <div class="col-1"></div>
+      <div class="col-lg-1"></div>
     </div>
-    <div *ngIf="false" class="row">
-      <a [routerLink]="['tournaments']" class="btn btn-primary mx-auto mt-5" skipLocationChange>Saiba mais!</a>
+    <div class="row">
+      <a [routerLink]="['tournament']" class="btn btn-primary mx-auto mt-5">Saiba mais!</a>
     </div>
   </div>
 </div>
 
 <div id="contact" class="row bg-2 border-bottom py-5 w-100 m-0">
-  <div class="col-5 mx-auto">
+  <div class="col-10 col-md-8 col-lg-5 mx-auto">
     <div class="row">
       <h2 class="mx-auto">Contate-nos</h2>
     </div>
@@ -110,8 +110,14 @@
         <div *ngIf="errorMessage != null" class="form-group">
           <p class="text-danger">{{ errorMessage }}</p>
         </div>
+        <div *ngIf="successMessage != null" class="form-group">
+          <p class="text-success">{{ successMessage }}</p>
+        </div>
+        <div *ngIf="idleMessage != null" class="form-group">
+          <p class="text-secondary">{{ idleMessage }}</p>
+        </div>
         <button type="button" class="btn btn-primary px-5 py-2 float-right"
-          (click)="sendContactUs(name, email, message)">Enviar</button>
+          (click)="sendContactUs(name, email, message)" [disabled]="idleMessage != null">Enviar</button>
       </div>
     </div>
   </div>
