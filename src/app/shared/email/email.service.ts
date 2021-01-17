@@ -1,22 +1,23 @@
-import { Email } from '../../../assets/smtp.js';
-import { from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.js';
+import { EmailData } from './email.model.js';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
-// declare let Email: any;
-
+@Injectable()
 export class EmailService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  public send(t: string, f: string, s: string, b: string): Promise<any> {
-    return Email.send({
-      SecureToken: environment.emailToken,
-      To : t,
-      From : f,
-      Subject : s,
-      Body : b
-    });
+  public send(data: EmailData): Observable<{message: string} | any> {
+    return this.http
+      .post(environment.apiEndpoint + `email/send`, JSON.stringify(data), { observe: 'response' })
+      .pipe(
+        map((res: HttpResponse<any>) => res.body),
+        catchError((error: HttpErrorResponse) => throwError(error))
+      );
   }
 
 }
