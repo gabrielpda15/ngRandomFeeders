@@ -1,26 +1,37 @@
-<header [class.position-absolute]="!relative"
-        [class.position-relative]="relative"
-        [class.with-bg]="relative"
-        class="w-100 pb-2">
+<header [class.position-absolute]="!relative" [class.position-relative]="relative" [class.with-bg]="relative"
+  class="w-100 pb-2">
   <nav class="navbar navbar-expand-lg navbar-light pt-3 px-5 w-100">
     <a class="navbar-brand" [routerLink]="['/']"><b>Random Feeders</b></a>
     <div class="flex w-100">
       <div class="collapse navbar-collapse float-right" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item" routerLinkActive="active">
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item my-auto" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/']" [fragment]="'about'">Sobre</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item my-auto">
             <a class="nav-link" [routerLink]="['/']" [fragment]="'tournaments'">Campeonatos</a>
           </li>
-          <li *ngIf="false" class="nav-item">
-            <a class="nav-link" [routerLink]="['/']" [fragment]="'equip'">Equipe</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item my-auto">
             <a class="nav-link" [routerLink]="['/']" [fragment]="'contact'">Contate-nos</a>
           </li>
-          <li *ngIf="loginEnabled" class="nav-item">
+          <li *ngIf="!loggedIn" class="nav-item my-auto">
             <a class="nav-link btn btn-light" (click)="login.open()">Login</a>
+          </li>
+          <li *ngIf="loggedIn" class="nav-item">
+            <a class="nav-link" [ngClass]="getAvatarUrl == null ? ['icon', 'profile'] : []" (click)="logout()">
+              <img class="rounded-circle profile" *ngIf="getAvatarUrl != null" [src]="getAvatarUrl"
+                [ngbTooltip]="imgTooltip" placement="bottom auto" tooltipClass="custom-tooltip"
+                [ngbPopover]="profilePopover" triggers="manual" #p="ngbPopover" #t="ngbTooltip"
+                (click)="toggleProfile(p)" (mouseenter)="toggleTooltip(t)" />
+              <ng-template #imgTooltip>
+                {{ avatarSpan }}
+              </ng-template>
+              <ng-template #profilePopover>
+                <div>
+
+                </div>
+              </ng-template>
+            </a>
           </li>
         </ul>
       </div>
@@ -28,4 +39,5 @@
   </nav>
 </header>
 
-<app-login #login></app-login>
+<app-login #login (authenticated)="onLoginAuthenticated($event)" (register)="register.open()"></app-login>
+<app-register #register (success)="onRegisterSuccess($event)"></app-register>

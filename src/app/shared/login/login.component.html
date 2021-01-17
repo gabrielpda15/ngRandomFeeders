@@ -1,7 +1,7 @@
-<app-modal #modal title="Login" submitText="Login" (submitAction)="onSubmit()">
+<app-modal #modal title="Login" submitText="Login" [submitEnable]="canSubmit()" (submitAction)="onSubmit($event)">
   <div class="form-group">
-    <label class="" for="username">Usuário</label>
-    <input [(ngModel)]="username" class="form-control" id="username" type="text" placeholder="Usuário" required>
+    <label class="" for="username">Usuário / E-Mail</label>
+    <input [(ngModel)]="username" class="form-control" id="username" type="text" placeholder="Usuário / E-Mail" required>
   </div>
   <div class="form-group">
     <label class="" for="password">Senha</label>
@@ -9,5 +9,8 @@
   </div>
   <div *ngIf="errorMessage !== null" class="form-group">
     <p class="text-danger">{{ errorMessage }}</p>
+  </div>
+  <div class="d-flex w-100">
+    <p class="">Não tem conta? <a (click)="register.emit()">Cadastre-se</a>!</p>
   </div>
 </app-modal>

@@ -1,5 +1,5 @@
 <ng-template #modalobj let-modal>
-  <div class="modal-content">
+  <div class="modal-content" (keydown)="handleKeyDown($event, modal)">
     <div class="modal-header">
       <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
       <div data-dismiss="modal" aria-label="Close" class="close" (click)="modal.close('cancel')">
@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class="modal-body">
-      <ng-content></ng-content>
+      <ng-content #content></ng-content>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="modal.close('cancel')">Voltar</button>
-      <button type="button" class="btn btn-primary" (click)="submitAction.emit($event)">{{ submitText }}</button>
+      <button type="button" class="btn btn-primary" (click)="submit(modal)" [disabled]="!submitEnable">{{ submitText }}</button>
     </div>
   </div>
 </ng-template>

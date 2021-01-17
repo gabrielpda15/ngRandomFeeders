@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
+import { isNullOrWhitespace } from '../utils';
 import { LoginService, LoginResult } from './login.service';
 
 @Component({
@@ -8,12 +10,11 @@ import { LoginService, LoginResult } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService/*, private session: SessionService*/) { }
-
   private isEnabled = false;
 
   @Output() public cancel = new EventEmitter<any>();
   @Output() public authenticated = new EventEmitter<LoginResult>();
+  @Output() public register = new EventEmitter<any>();
 
   public username: string;
   public password: string;
@@ -21,29 +22,40 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('modal', {static: false}) private modal: ModalComponent;
 
+  constructor(private loginService: LoginService/*, private session: SessionService*/) { }
+
   ngOnInit(): void {
   }
 
-  public onSubmit(): void {
+  public onSubmit(event: any): void {
     this.loginService.postLogin({username: this.username, password: this.password}).subscribe(result => {
       if (result.authenticated) {
-        this.modal.close('ok');
+        this.authenticated.emit(result);
+        event.close();
       } else {
         this.errorMessage = result.message;
       }
-    }, error => {
-      this.errorMessage = error;
-    }, () => { });
+    }, (error: HttpErrorResponse) => {
+      if (error.status == 401) {
+        this.errorMessage = error.error.message;
+        this.clearFields();
+      }
+    }, this.clearFields);
+  }
+
+  private clearFields(): void {
+    this.username = '';
+    this.password = '';
   }
 
   public open(): void {
-    this.modal.open().then((result) => {
-      if (result === 'ok') {
-        this.authenticated.emit(result);
-      } else {
-        this.cancel.emit(result);
-      }
-    }, (reason) => this.cancel.emit(reason));
+    this.modal.open();
+  }
+
+  public canSubmit(): boolean {
+    if (isNullOrWhitespace(this.username)) return false;
+    if (isNullOrWhitespace(this.password)) return false;
+    return true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 function defaultSubmitAction(): void { }
@@ -14,21 +14,27 @@ export class ModalComponent implements OnInit {
 
   @Input() public title = 'Modal';
   @Input() public submitText = 'Ok';
+  @Input() public submitEnable: boolean = true;
   @Output() public submitAction: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('modalobj', { static: false }) public modal: any;
-
-  closeResult: string;
+  @ViewChild('modalobj', { static: false }) public modal: TemplateRef<any>;
+  @ViewChild('content', { static: false }) public content: TemplateRef<any>;
 
   ngOnInit(): void {
+  }
+
+  public handleKeyDown(event: KeyboardEvent, modal: any): void {
+    if (event.key === 'Enter' && this.submitEnable) {
+      this.submitAction.emit(modal);
+    }
   }
 
   public open(): Promise<any> {
     return this.modalService.open(this.modal, {ariaLabelledBy: 'modal-basic-title'}).result;
   }
 
-  public close(reason: string): void {
-    this.modal.close(reason);
+  public submit(modal: any): void {
+    this.submitAction.emit(modal);
   }
 
 }
