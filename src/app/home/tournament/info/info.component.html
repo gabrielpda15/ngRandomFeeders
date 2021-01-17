@@ -1,4 +1,7 @@
 <div class="d-flex flex-column w-100 h-100">
+
+  <app-back-button [route]="['/']" [fragment]="'tournaments'"></app-back-button>
+
   <div class="w-75 m-auto text-center">
     <h2 class="mb-4">Torneios do Random Feeders</h2>
     <div class="row">
@@ -7,7 +10,7 @@
       </p>
       <p class="mx-4 w-100">
         Inicialmente iremos focar apenas em torneios de League of Legends, já que pretendemos construir uma
-        boa base de jogadores antes de partir para torneios de outros jogos! Estamos em uma fase de  testes dos torneios
+        boa base de jogadores antes de partir para torneios de outros jogos! Estamos em uma fase de testes dos torneios
         já que não sabemos ao certo como isso será no futuro!
       </p>
       <p class="mx-4 w-100">
@@ -18,7 +21,8 @@
     <div class="row text-center">
       <div class="mx-auto">
         <a [routerLink]="['/tournament/rules']" class="btn btn-primary mt-5 mx-2">Regras</a>
-        <a *ngIf="environment.subscriptionEnabled" [routerLink]="['/tournament/subscription']" class="btn btn-primary mt-5 mx-2">Inscrição</a>
+        <a *ngIf="environment.subscriptionEnabled" [routerLink]="['/tournament/subscription']"
+          class="btn btn-primary mt-5 mx-2">Inscrição</a>
       </div>
     </div>
   </div>

@@ -1,14 +1,14 @@
-<div class="bg-card border text-center pl-2 pr-4 pt-5 pb-2">
-  <div class="mb-5">
-    <fa-icon class="circle-icon bg-2 mb-2" [class.diff]="diff" [icon]="icon" size="2x"></fa-icon>
+<div class="bg-card border text-center pl-2 pr-4 pt-4 pb-2">
+  <div class="d-flex mb-4">
+    <div class="mx-auto rounded-circle d-flex circle-icon" [ngClass]="value.bg">
+      <fa-icon class="m-auto" [icon]="icon" size="2x"></fa-icon>
+    </div>
   </div>
-  <h3>{{initials}}</h3>
-  <h5>{{title}}</h5>
+  <h3>{{ value.initials }}</h3>
+  <h5>{{ value.title }}</h5>
   <div class="text-justify my-4">
     <ul>
-      <li *ngFor="let item of description">
-        {{item}}
-      </li>
+      <li *ngFor="let item of description">{{ item }}</li>
     </ul>
   </div>
   <br />

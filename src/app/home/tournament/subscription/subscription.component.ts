@@ -14,8 +14,7 @@ declare type subscription = {
 
 @Component({
   selector: 'app-subscription',
-  templateUrl: './subscription.component.html',
-  styleUrls: [ './subscription.component.scss' ]
+  templateUrl: './subscription.component.html'
 })
 export class SubscriptionComponent implements OnInit {
 
@@ -56,27 +55,25 @@ export class SubscriptionComponent implements OnInit {
         if (discordRegex.test(value.discord.value)) {
           if (!isNullOrWhitespace(value.nicklol.value)) {
             this.idleMessage = 'Enviando inscrição...';
-            this.emailService.send('contato@randomfeeders.com.br',
-                                 'contato@randomfeeders.com.br',
-                                 `Inscrição no torneio`,
-                                 `Nome: ${value.name.value}<br>
-                                  Email: ${value.email.value}<br>
-                                  Discord: ${value.discord.value}<br>
-                                  Nick do LoL: ${value.nicklol.value}<br><br>
-                                  Json: ${this.getJson(value)}`)
-            .then(r => {
+
+            this.emailService.send({
+              subject: `Inscrição no torneio`,
+              body: `Nome: ${value.name.value}<br>
+              Email: ${value.email.value}<br>
+              Discord: ${value.discord.value}<br>
+              Nick do LoL: ${value.nicklol.value}<br><br>
+              Json: ${this.getJson(value)}`
+            }).subscribe((r) => {
               if (r === 'OK') {
                 this.successMessage = 'Inscrição enviada com sucesso!';
               } else {
                 this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
                 console.error(r);
               }
-            })
-            .catch(e => {
+            }, error => {
               this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
-              console.error(e);
-            })
-            .finally(() => {
+              console.error(error);
+            }, () => {
               this.idleMessage = null;
               value.name.value = '';
               value.email.value = '';

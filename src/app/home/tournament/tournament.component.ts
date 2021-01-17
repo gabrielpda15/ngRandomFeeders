@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faIcons } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tournament',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class TournamentComponent implements OnInit {
 
   constructor() { }
+
+  public get arrow() {
+    return faIcons['arrowCircleLeft'];
+  }
 
   ngOnInit(): void {
   }

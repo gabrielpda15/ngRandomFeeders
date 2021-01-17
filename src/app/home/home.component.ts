@@ -30,30 +30,27 @@ export class HomeComponent implements OnInit {
       if (emailRegex.test(email.value)) {
         if (message.value.length > 20) {
           this.idleMessage = 'Enviando mensagem...';
-          this.emailService.send('contato@randomfeeders.com.br',
-                                 'contato@randomfeeders.com.br',
-                                 `${name.value} envio uma mensagem`,
-                                 `Nome: ${name.value}<br>
-                                  Email: ${email.value}<br><br>
-                                  ${message.value}`)
-            .then(r => {
-              if (r === 'OK') {
-                this.successMessage = 'Mensagem enviada com sucesso!';
-              } else {
-                this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
-                console.error(r);
-              }
-            })
-            .catch(e => {
+          this.emailService.send({
+            subject: `${name.value} envio uma mensagem`,
+            body: `Nome: ${name.value}<br>
+            Email: ${email.value}<br><br>
+            ${message.value}`
+          }).subscribe((r) => {
+            if (r === 'OK') {
+              this.successMessage = 'Mensagem enviada com sucesso!';
+            } else {
               this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
-              console.error(e);
-            })
-            .finally(() => {
-              name.value = '';
-              email.value = '';
-              message.value = '';
-              this.idleMessage = null;
-            });
+              console.error(r);
+            }
+          }, error => {
+            this.errorMessage = 'Aconteceu um erro inesperado! Aguarde e tente novamente mais tarde.';
+            console.error(error);
+          }, () => {
+            name.value = '';
+            email.value = '';
+            message.value = '';
+            this.idleMessage = null;
+          });
         } else {
           this.errorMessage = 'A sua mensagem deve possuir mais de 20 caracteres!';
         }
