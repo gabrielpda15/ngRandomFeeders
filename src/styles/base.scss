@@ -1,0 +1,63 @@
+html, body {
+  height: 100vh;
+  // width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: #474747;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+p, h1, h2, h3, h4, h5 {
+  color: #474747;
+}
+
+a.back {
+  width: 100px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.circle-icon {
+  width: 80px;
+  height: 80px;
+  color: #f0f0f0;
+
+  &.bg-1 {
+    background-color: #add43c;
+  }
+
+  &.bg-2 {
+    background-color: #3cadd4;
+  }
+
+  &.bg-3 {
+    background-color: #d43c61;
+  }
+}
+
+footer {
+  background-color: #383b43;
+  height: 100px;
+  width: 100vw;
+  color: $text-light;
+
+  div {
+    width: 50%;
+    height: fit-content;
+  }
+
+  a {
+    color: $text-light;
+    &:hover {
+      color: $text-light;
+    }
+  }
+
+  .discord {
+    background-color: $discord-color;
+  }
+}
