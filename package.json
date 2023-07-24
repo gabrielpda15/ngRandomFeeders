@@ -8,8 +8,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
-    "release": "ng build --configuration production && node server.js",
+    "build": "ng build --configuration production --aot",
+    "release": "ng build --configuration production --aot && node server.js",
     "config": "ts-node config.ts",
     "heroku-postbuild": "ts-node config.ts && ng build --configuration production",
     "test": "ng test",
