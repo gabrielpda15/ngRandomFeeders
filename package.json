@@ -2,8 +2,8 @@
   "name": "ngrandomfeeders",
   "version": "1.0.0",
   "engines": {
-    "node": "15.4.0",
-    "npm": "7.3.0"
+    "node": "18.12.1",
+    "yarn": "1.22.19"
   },
   "scripts": {
     "ng": "ng",
