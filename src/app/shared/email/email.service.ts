@@ -1,8 +1,8 @@
-import { from, Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment.js';
+import { Observable, throwError } from 'rxjs';
 import { EmailData } from './email.model.js';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable()

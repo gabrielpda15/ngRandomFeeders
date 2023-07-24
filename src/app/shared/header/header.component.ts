@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   @Input() public relative = false;
   public loggedIn: boolean = false;
   public avatarSpan: string = null;
+  public loginEnabled: boolean = environment.loginEnabled;
 
   public get getAvatarUrl(): string {
     if (isNullOrWhitespace(this.avatarUrl)) return null;
